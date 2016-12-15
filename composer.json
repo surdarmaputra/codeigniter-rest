@@ -1,0 +1,20 @@
+{
+	"description": "The CodeIgniter REST framework",
+	"name": "CodeIgniter REST",
+	"type": "project",
+	"homepage": "https://github.com/sdarmaputra/codeigniter-rest",
+	"license": "",
+	"support": {
+		"source": "https://github.com/sdarmaputra/codeigniter-rest"
+	},
+	"require": {
+		"php": ">=5.2.4",
+		"firebase/php-jwt": "^4.0"
+	},
+	"suggest": {
+		"paragonie/random_compat": "Provides better randomness in PHP 5.x"
+	},
+	"require-dev": {
+		"mikey179/vfsStream": "1.1.*"
+	}
+}
