@@ -1,10 +1,12 @@
 <?php
 if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class User extends CIREST_Model {
+class RoleController extends CIREST_Controller {
 	function __construct() {
 		parent::__construct();
-		$this->setTable('user');
+		$this->setDefaultModel('role');
+		$this->setDefaultModelPrimaryKey('no');
 	}
 }
+
 ?>
