@@ -4,33 +4,53 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 class UserController extends CIREST_Controller {
 	function __construct() {
 		parent::__construct();
-		$this->setDefaultModel('user');
-		$this->setDefaultModelPrimaryKey('no');
+		$this->load->model('user');
+		$this->rest_input = new CIREST_Input();
 	}
 
-	// Overriding create function from CIREST_Controller
-	public function create() {
-		$this->handleRequest('POST');
-		$newData = $this->input->post();
-		if (isset($newData['password'])) {
-			$secretWord = $this->config->item('secret_word');
-			$newData['password'] = sha1($secretWord.$newData['password']);
-		}
-		$status = $this->defaultModel->save($newData);
-		$this->render($status);
+	function index() {
+		$this->checkRequestMethod('GET');
+		$data = array(
+			'title' => 'Get all users',
+			'message' => 'Stay awesome!'
+		);
+		$this->render($data);
 	}
 
-	public function update($id) {
-		$this->handleRequest('PUT');
-		$updateData = $this->input->put();
-		if (isset($updateData['password'])) {
-			$secretWord = $this->config->item('secret_word');
-			$updateData['password'] = sha1($secretWord.$updateData['password']);
-		}
-		$status = $this->defaultModel
-			->where(array($this->defaultModelPrimaryKey => $id))
-			->update($updateData);
-		$this->render($status);
+	function getById($id = null) {
+		$this->checkRequestMethod('GET');
+		$data = array(
+			'title' => 'Get user by ID='.$id,
+			'message' => 'Stay awesome!'
+		);
+		$this->render($data);
+	}
+
+	function create() {
+		$this->checkRequestMethod('POST');
+		$data = array(
+			'title' => 'Create new user',
+			'message' => 'Stay awesome!'
+		);
+		$this->render($data);	
+	}
+
+	function update($id = null) {
+		$this->checkRequestMethod('PUT');
+		$data = array(
+			'subject' => 'Update whole user data by ID='.$id,
+			'message'  => 'Good job!');
+
+		$this->render($data);	
+	}
+
+	function delete($id = null) {
+		$this->checkRequestMethod('DELETE');
+		$data = array(
+			'subject' => 'Delete user data by ID='.$id,
+			'message'  => 'Good job!');
+
+		$this->render($data);		
 	}
 }
 

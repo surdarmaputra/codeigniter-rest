@@ -75,12 +75,11 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => isset($_SERVER['EC_MASTERDB_HOSTNAME']) ? $_SERVER['EC_MASTERDB_HOSTNAME'] : '',
-	'username' => isset($_SERVER['EC_MASTERDB_USERNAME']) ? $_SERVER['EC_MASTERDB_USERNAME'] : '',
-	'password' => isset($_SERVER['EC_MASTERDB_PASSWORD']) ? $_SERVER['EC_MASTERDB_PASSWORD'] : '',
-	'database' => isset($_SERVER['EC_MASTERDB_DATABASE']) ? $_SERVER['EC_MASTERDB_DATABASE'] : '',
-	'dbdriver' => isset($_SERVER['EC_MASTERDB_DBDRIVER']) ? $_SERVER['EC_MASTERDB_DBDRIVER'] : '',
-	'port' => isset($_SERVER['EC_MASTERDB_PORT']) ? $_SERVER['EC_MASTERDB_PORT'] : '',
+	'hostname' => 'localhost',
+	'username' => '',
+	'password' => '',
+	'database' => '',
+	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
@@ -95,5 +94,3 @@ $db['default'] = array(
 	'failover' => array(),
 	'save_queries' => TRUE
 );
-
-require APPPATH.'/config/unit_databases.php';
